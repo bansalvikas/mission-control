@@ -1,8 +1,10 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { GridBackground } from './components/GridBackground'
 import { Hero } from './components/Hero'
 import { StatusBar } from './components/StatusBar'
 import { ProjectCard, type ProjectStatus } from './components/ProjectCard'
 import { Github } from 'lucide-react'
+import { HoogleApp } from './features/hoogle/HoogleApp'
 
 interface Project {
   name: string
@@ -21,14 +23,15 @@ const projects: Project[] = [
     status: 'live',
   },
   {
-    name: 'Next Project',
-    description: 'Something exciting is in the works. Stay tuned.',
-    tech: ['???'],
-    status: 'coming_soon',
+    name: 'Hoogle',
+    description: 'Google for my home — a natural-language PWA that remembers where I put physical stuff. Ask "where are my car keys?" and get an instant answer.',
+    url: '/hoogle',
+    tech: ['React', 'TypeScript', 'Firebase', 'Claude', 'PWA'],
+    status: 'live',
   },
 ]
 
-function App() {
+function Portfolio() {
   const liveCount = projects.filter((p) => p.status === 'live').length
 
   return (
@@ -88,6 +91,17 @@ function App() {
         </footer>
       </div>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Portfolio />} />
+        <Route path="/hoogle/*" element={<HoogleApp />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
