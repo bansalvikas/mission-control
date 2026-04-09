@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Maskable: keep content inside the inner 80% safe zone (64..448). -->
+  <rect width="512" height="512" fill="#0a0a0f"/>
+  <!-- Terminal prompt chevron within safe area -->
+  <path d="M 176 200 L 272 256 L 176 312"
+        stroke="#00ff88" stroke-width="32"
+        stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <rect x="296" y="236" width="56" height="40" fill="#00ff88"/>
+</svg>

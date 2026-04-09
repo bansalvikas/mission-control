@@ -1,10 +1,26 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { GridBackground } from './components/GridBackground'
 import { Hero } from './components/Hero'
 import { StatusBar } from './components/StatusBar'
 import { ProjectCard, type ProjectStatus } from './components/ProjectCard'
 import { Github } from 'lucide-react'
-import { HoogleApp } from './features/hoogle/HoogleApp'
+
+// Hoogle ships ~500 kB of Firebase SDK. Keep it out of the portfolio bundle —
+// visitors landing on / should never download it.
+const HoogleApp = lazy(() =>
+  import('./features/hoogle/HoogleApp').then((mod) => ({ default: mod.HoogleApp })),
+)
+
+function HoogleFallback() {
+  return (
+    <div className="relative min-h-[100dvh] flex items-center justify-center bg-[#0a0a0f] font-mono text-sm text-slate-600">
+      <span>
+        hoogle<span className="text-[#00ff88] animate-blink">_</span>
+      </span>
+    </div>
+  )
+}
 
 interface Project {
   name: string
@@ -99,7 +115,14 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Portfolio />} />
-        <Route path="/hoogle/*" element={<HoogleApp />} />
+        <Route
+          path="/hoogle/*"
+          element={
+            <Suspense fallback={<HoogleFallback />}>
+              <HoogleApp />
+            </Suspense>
+          }
+        />
       </Routes>
     </BrowserRouter>
   )

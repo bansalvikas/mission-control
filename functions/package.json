@@ -5,6 +5,8 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "lint": "eslint --ext .js,.ts .",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
@@ -22,7 +24,9 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
-    "typescript": "^5.9.3"
+    "@vitest/expect": "^4.1.4",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.4"
   },
   "private": true
 }

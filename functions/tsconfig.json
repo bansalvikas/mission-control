@@ -15,5 +15,6 @@
     "resolveJsonModule": true
   },
   "compileOnSave": true,
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/**/*.test.ts", "lib", "node_modules"]
 }
