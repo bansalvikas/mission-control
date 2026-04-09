@@ -1,0 +1,25 @@
+# Files the Firebase CLI should NOT upload to Cloud Functions.
+# Cloud Build runs `npm install` from the uploaded package.json, then
+# executes lib/index.js (produced by the `predeploy` tsc step).
+
+# Dependencies — reinstalled fresh in the cloud
+node_modules/
+
+# Git metadata
+.git/
+.gitignore
+
+# Local environment files — runtime secrets live in Firebase Secret Manager,
+# not in uploaded files.
+.env
+.env.*
+!.env.example
+
+# Local test & dev tooling — not needed at runtime
+src/**/*.test.ts
+vitest.config.ts
+
+# Editor / OS cruft
+.vscode/
+.DS_Store
+*.swp
