@@ -41,7 +41,7 @@ const projects: Project[] = [
   {
     name: 'Hoogle',
     description: 'Google for my home — a natural-language PWA that remembers where I put physical stuff. Ask "where are my car keys?" and get an instant answer.',
-    url: '/hoogle',
+    url: 'https://hoogle-e1280.web.app/hoogle',
     tech: ['React', 'TypeScript', 'Firebase', 'Claude', 'PWA'],
     status: 'live',
   },
